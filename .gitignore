@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.egg-info/
+build/
+dist/
+
+# hasil installer (terikat ke komputer ini)
+splitmedia/.setup/
+
+# media hasil olahan
+*.mp3
+*.mp4
+*.mkv
+*.m4a
+*.opus
+*.wav
+*.flac
+
+# data kerja pribadi (jangan diunggah)
+bahan-audio/
