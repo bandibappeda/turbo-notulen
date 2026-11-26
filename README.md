@@ -3,10 +3,18 @@
 Aplikasi terminal interaktif untuk memisahkan audio dan video, baik dari **URL** (YouTube, dan situs lain yang didukung [yt-dlp](https://github.com/yt-dlp/yt-dlp)) maupun dari **file lokal**.
 
 ```
-╭──────────────────────────────────────────────╮
-│                  splitmedia                  │
-│   Download · pisah audio/video · potong segmen│
-╰──────────────────────────────────────────────╯
+                              splitmedia  split audio/video
+                    v1.0.0   ·   yt-dlp 2026.11.23   ·   ffmpeg siap
+
+  Menu
+  1    Unduh dari URL        YouTube & situs lain
+  2    File lokal            ekstrak audio / video
+  3    Split audio           potong jadi banyak bagian
+  4    Potong satu segmen    ambil rentang tertentu
+  5    Gabung teks           .txt / .md jadi satu file
+  6    Tentang               versi & komponen
+  0    Keluar
+  ›
 ```
 
 ## Fitur
@@ -17,7 +25,10 @@ Aplikasi terminal interaktif untuk memisahkan audio dan video, baik dari **URL**
 | **File lokal** | ekstrak audio · ekstrak video (tanpa suara) · pisahkan keduanya sekaligus |
 | **Split audio** | pecah audio jadi banyak bagian: per **titik potong** (`00:29:59`) atau **durasi tetap** (tiap `00:29:59`) |
 | **Potong segmen** | ambil satu rentang waktu tertentu (`30-90`, `00:30-01:30`, `1:02:03-1:05:00`) dari video, audio, atau gabungan |
-| **Gabung teks** | gabungkan 2 atau lebih file `.txt`/`.md`/teks lain jadi satu file, sesuai urutan pilihan Anda |
+| **Gabung teks** | gabungkan file `.txt`/`.md`/teks lain jadi satu, sesuai urutan pilihan Anda |
+
+Setiap alur menampilkan posisi langkah (mis. `2/3  Format audio`), kartu ringkas untuk info
+media dan hasil, serta pratinjau sebelum pekerjaan dijalankan.
 
 ### Split audio
 

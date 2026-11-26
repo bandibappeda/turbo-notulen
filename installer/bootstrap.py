@@ -6,7 +6,6 @@ ditemukan, dan hanya memakai pustaka standar.
 """
 from __future__ import annotations
 
-import hashlib
 import json
 import os
 import platform
@@ -14,7 +13,6 @@ import re
 import shutil
 import subprocess
 import sys
-import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -528,7 +526,6 @@ def install_packages(venv_python: str | None = None) -> None:
                     bar = re.search(r"([\d.]+)\s*/\s*(([\d.]+))\s*(kB|MB|GB)", line,
                                     re.IGNORECASE)
                     if bar:
-                        unit = {"kb": 1e3, "mb": 1e6, "gb": 1e9}[bar.group(4).lower()]
                         fraction = min(1.0, float(bar.group(1)) / max(float(bar.group(3)), 1e-9))
                         live.update(done=int(done_bytes + fraction * current_size))
             code = proc.wait()
@@ -600,7 +597,6 @@ def _download_once(url: str, part: Path, label: str, *, min_bytes: int) -> None:
         total = (int(length) + resume) if length and length.isdigit() else None
         mode = "ab" if resume else "wb"
         done = resume
-        started = time.time()
         last = 0.0
         with ui.Live(label, total=total) as live:
             if total:
@@ -697,7 +693,6 @@ def install_ffmpeg(venv_python: str | None = None) -> None:
         live.finish(text="FFmpeg dari paket tidak tersedia", ok=False, note="lanjut unduh")
     ui.w("  " + ui.c("Mengunduh FFmpeg dari internet…", "gray"))
 
-    target_dir = STATE_DIR / "bin"
     archive = STATE_DIR / "cache" / "ffmpeg.zip"
     errors: list[str] = []
     for url in FFMPEG_URLS:
@@ -870,7 +865,7 @@ def run(force: bool = False) -> int:
 
     jobs, size = estimate_download(findings)
     download_line = (
-        f"Perkiraan unduhan: " + ui.c(f"±{ui.human(size)}", "yellow")
+        "Perkiraan unduhan: " + ui.c(f"±{ui.human(size)}", "yellow")
         if size else "Tidak perlu unduh — semua sumber sudah tersedia."
     )
     ui.w()
